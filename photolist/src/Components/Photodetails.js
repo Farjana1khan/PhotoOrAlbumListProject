@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
+import "../App.css"
 export default class PhotoDetails extends Component {
 
       state = {
@@ -22,22 +23,21 @@ componentDidMount() {
 
             const {photoDetails} = this.state
             return (
-                  <div className='row'>
-                        <div>
-                              <NavLink to="/">back</NavLink>
-
-                        </div>
-
-                        <div key={photoDetails.id} className='col s4 m4' >
-                        <div className='card'>
-                              <div className='card-image'>
-                              <img src={ photoDetails.thumbnailUrl} alt='photos' />
-                              <span className='card-title' >{photoDetails.title}</span>
-                              </div>
-                        </div>
-                        </div>
-                        
+              <div className="row2">
+                <div key={photoDetails.id} className="col">
+                  <div className="card">
+                    <div className="card-image">
+                      <img src={photoDetails.thumbnailUrl} alt="photos" />
+                      <span className="card-title">{photoDetails.title}</span>
+                    </div>
+                    <div className="card-action">
+                      <NavLink to="/" className="navlink">
+                        back to List
+                      </NavLink>
+                    </div>
                   </div>
-            )
+                </div>
+              </div>
+            );
       }
 }

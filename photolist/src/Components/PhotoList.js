@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from "axios"
 import { NavLink } from 'react-router-dom'
-export default class AlbumList extends React.Component {
+import "../App.css"
+export default class PhotoList extends React.Component {
 
       state = {
             photos: [],
@@ -26,6 +27,8 @@ filterPhotos = () =>{
 
       })
 
+      //console.log(filterPhotolist);
+
       this.setState({
             visiblePhotos: filterPhotolist
       })
@@ -34,20 +37,21 @@ filterPhotos = () =>{
       render() {
             return (
                  <section>
-                       <div className='row'>
+                       <div className='row1'>
                              <input type="text"
                              onChange={this.filterPhotos}
                              ref={node => (this.filterText = node)}
-                             className='col s4 m4'
+                             className='searchtext'
                               />
                               <button onClick={this.filterphotos} 
-                              className='btn  col s2 m2' >Filter</button>
+                              className='filterbutton' >Filter</button>
                        </div>
+                       <hr/>
 
-                  <div className='row'>
+                  <div className='row2'>
                         {this.state.visiblePhotos.map(photo => {
                               return (
-                                <div className="col s4 m4">
+                                <div className="col">
                                   <div className="card">
                                     <div className="card-image">
                                       <img src={photo.thumbnailUrl} alt='photos' />
@@ -56,7 +60,7 @@ filterPhotos = () =>{
                                       </span>
                                     </div>
                                     <div className="card-action">
-                                      <NavLink to={`${photo.id}`}>
+                                      <NavLink to={`${photo.id}`} className="navlink" >
                                         This is a link
                                       </NavLink>
                                     </div>
